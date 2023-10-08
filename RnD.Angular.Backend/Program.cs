@@ -63,6 +63,14 @@ app.UseAuthorization();
 
 app.UseSwagger();
 
+app.UseCors(builder =>
+{
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
+
 app.UseSwaggerUI(options => options.SwaggerEndpoint("api/swagger.json", "Customer"));
 
 app.MapControllers();
