@@ -4,9 +4,9 @@ using RnD.Angular.Backend.Models;
 
 namespace RnD.Angular.Backend.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     [Route("[controller]")]
-    [ApiController]
+    [ApiController] 
     public class CustomerController : ControllerBase
     {
         private readonly LearnDbContext learnDbContext;
