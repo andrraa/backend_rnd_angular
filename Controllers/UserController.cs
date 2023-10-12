@@ -22,8 +22,9 @@ namespace API.EmployeeManagement.Controllers
 
             if (user == null)
             {
-                return StatusCode(StatusCodes.Status401Unauthorized, new ResponseVM
+                return StatusCode(StatusCodes.Status200OK, new ResponseVM
                 {
+                    code = StatusCodes.Status401Unauthorized,
                     message = "Username atau Password Salah!"
                 });
             }
@@ -36,6 +37,8 @@ namespace API.EmployeeManagement.Controllers
             {
                 return StatusCode(StatusCodes.Status200OK, new
                 {
+                    Code = StatusCodes.Status200OK,
+                    Message = "Selamat Datang " + employee.Nama,
                     Nama = employee.Nama,
                     Username = user.Username,
                     Npp = employee.Npp,
@@ -44,8 +47,9 @@ namespace API.EmployeeManagement.Controllers
                 });
             }
 
-            return StatusCode(StatusCodes.Status404NotFound, new ResponseVM
+            return StatusCode(StatusCodes.Status200OK, new ResponseVM
             {
+                code = StatusCodes.Status404NotFound,
                 message = "Data Employee Tidak Ditemukan"
             });
         }
@@ -73,8 +77,9 @@ namespace API.EmployeeManagement.Controllers
 
             if (check != null)
             {
-                return StatusCode(StatusCodes.Status403Forbidden, new ResponseVM
+                return StatusCode(StatusCodes.Status200OK, new ResponseVM
                 {
+                    code = StatusCodes.Status400BadRequest,
                     message = "User Dengan NPP " + userRegisterVM.Npp + " Sudah Ada!"
                 });
             }
@@ -87,16 +92,18 @@ namespace API.EmployeeManagement.Controllers
 
                 return StatusCode(StatusCodes.Status200OK, new ResponseVM
                 {
+                    code = StatusCodes.Status200OK,
                     message = "Berhasil Melakukan Registrasi!"
                 });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status400BadRequest, new ResponseVM
+                return StatusCode(StatusCodes.Status200OK, new ResponseVM
                 {
+                    code = StatusCodes.Status400BadRequest,
                     message = "Gagal Melakukan Proses Registrasi, Karena: " + ex.Message
                 });
-            }
+            }   
         }
     }
 }
