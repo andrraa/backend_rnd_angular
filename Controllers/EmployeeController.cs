@@ -1,11 +1,13 @@
 ﻿using API.EmployeeManagement.Models;
 using API.EmployeeManagement.ViewModels;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.EmployeeManagement.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [EnableCors]
     public class EmployeeController : ControllerBase
     {
         private readonly EmployeeContext _employeeContext;

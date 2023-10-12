@@ -26,6 +26,14 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/Employee_Services/swagger/v1/swagger.json", "Employee Service");
 });
 
+app.UseCors(builder =>
+{
+    builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
